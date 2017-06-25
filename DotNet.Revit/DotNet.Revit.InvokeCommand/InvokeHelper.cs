@@ -18,40 +18,22 @@ namespace DotNet.Revit.InvokeCommand
         /// </summary>
         /// <param name="id">命令控件的Id值</param>
         /// <returns></returns>
-        public static bool Invoke(string id)
+        public static bool Invoke(string cmdId)
         {
-            var item = ComponentManager.Ribbon.FindItem(id, false, true);
-            if (item == null || !(item is RibbonCommandItem))
-                return false;
-
-            if (ExternalCommandHelper.CanExecute(id))
+            if (ExternalCommandHelper.CanExecute(cmdId))
             {
-                ExternalCommandHelper.executeExternalCommand(id);
+                ExternalCommandHelper.executeExternalCommand(cmdId);
+                return true;
+            }
+            else if (CommandHandlerService.canExecute(cmdId))
+            {
+                CommandHandlerService.invokeCommandHandler(cmdId);
                 return true;
             }
             else
             {
-                var cmdId = UIFramework.ControlHelper.GetCommandId(item);
-
-                if (!CommandHandlerService.canExecute(cmdId))
-                {
-                    var ex = (item as RibbonCommandItem).CommandHandler;
-                    if (ex == null || !ex.CanExecute(null))
-                        return false;
-
-                    ex.Execute(null);
-                    return true;
-                }
-
-                var type = typeof(BarControlId).Assembly.GetType("UIFramework.CommandUtility");
-                type.InvokeMember("Execute",
-                    BindingFlags.Static | BindingFlags.Public | BindingFlags.InvokeMethod,
-                    Type.DefaultBinder, null,
-                    new object[] { item });
-
-                return true;
+                return false;
             }
-
         }
 
     }

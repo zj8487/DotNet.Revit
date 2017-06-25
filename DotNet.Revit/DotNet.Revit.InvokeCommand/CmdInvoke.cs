@@ -16,9 +16,14 @@ namespace DotNet.Revit.InvokeCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            // 调用Look up Snoop Db
+            //// 调用Look up Snoop Db
 
-            InvokeHelper.Invoke("CustomCtrl_%CustomCtrl_%CustomCtrl_%Add-Ins%Revit Lookup%Options%Snoop Db..");
+            //InvokeHelper.Invoke("CustomCtrl_%CustomCtrl_%CustomCtrl_%Add-Ins%Revit Lookup%Options%Snoop Db..");
+
+            // 调用右键菜单 - 区域放大
+            // 右键菜单的命令Id可到日志内进行查询..
+
+            InvokeHelper.Invoke("ID_ZOOM_IN");
 
             return Result.Succeeded;
         }
