@@ -30,41 +30,19 @@ namespace DotNet.Revit.ExternalEvent
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            m_ExternalEvent = Autodesk.Revit.UI.ExternalEvent.Create(new ExternalEventHandler());
+            m_Instance = this;
+
+            m_ExternalEvent = Autodesk.Revit.UI.ExternalEvent.Create(new ExternalEventCommon());
 
             var main = new MainWinodow();
             var mainHelper=new WindowInteropHelper(main);
             mainHelper.Owner = ComponentManager.ApplicationWindow;
             main.Show();
 
-
             return Result.Succeeded;
         }
     }
 
-    public class ExternalEventHandler : IExternalEventHandler
-    {
-        public void Execute(UIApplication app)
-        {
-            var uiDoc = app.ActiveUIDocument;
-            var doc = uiDoc.Document;
 
-            var ids = uiDoc.Selection.GetElementIds();
-
-            if (ids.Count > 0)
-            {
-                doc.Invoke(m => 
-                {
-                    doc.Delete(ids);
-
-                });
-            }
-        }
-
-        public string GetName()
-        {
-            return "Name";
-        }
-    }
 
 }

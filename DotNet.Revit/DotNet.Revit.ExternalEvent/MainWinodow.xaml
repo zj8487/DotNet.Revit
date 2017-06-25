@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Height="291" Width="462">
+             Height="291" Width="462" WindowStartupLocation="CenterOwner">
     <Grid>
         <Button Content="Button" HorizontalAlignment="Left" Height="30" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="120" Click="Button_Click"/>
     </Grid>
