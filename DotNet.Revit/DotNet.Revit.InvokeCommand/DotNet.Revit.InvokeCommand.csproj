@@ -34,6 +34,8 @@
       <HintPath>..\..\..\..\CYBIM\CYCommons\References\Revit\16\AdWindows.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI">
       <HintPath>..\..\..\..\CYBIM\CYCommons\References\Revit\16\RevitAPI.dll</HintPath>
       <Private>False</Private>
@@ -44,6 +46,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />

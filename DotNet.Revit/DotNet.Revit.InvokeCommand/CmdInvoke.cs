@@ -16,6 +16,7 @@ namespace DotNet.Revit.InvokeCommand
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
 
+            InvokeHelper.Invoke("ID_OBJECTS_WALL");
 
 
             return Result.Succeeded;
@@ -38,7 +39,9 @@ namespace DotNet.Revit.InvokeCommand
                 return;
 
             var id = UIFramework.ControlHelper.GetCommandId(e.Item);
-            Debug.WriteLine(string.Format("Text: {0}   ID: {1}", e.Item.Text, id));
+            UIFrameworkServices.DialogBarService.setOptionBarTitle(e.Item.Id);
+
+            Debug.WriteLine(string.Format("Text: {0}   ID: {1}", e.Item.Text, e.Item.Id));
         }
     }
 }
