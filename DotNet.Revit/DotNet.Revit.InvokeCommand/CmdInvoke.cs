@@ -21,7 +21,7 @@ namespace DotNet.Revit.InvokeCommand
             //InvokeHelper.Invoke("CustomCtrl_%CustomCtrl_%CustomCtrl_%Add-Ins%Revit Lookup%Options%Snoop Db..");
 
             // 调用右键菜单 - 区域放大
-            // 右键菜单的命令Id可到日志内进行查询..
+            // 右键菜单的 命令Id 可在Revit日志内进行查询..
 
             InvokeHelper.Invoke("ID_ZOOM_IN");
 
