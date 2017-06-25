@@ -9,31 +9,79 @@ namespace DotNet.Revit.ExternalEvent
 {
     public class ExternalEventHelper
     {
-        private ExternalEventCommon m_ExternalEventCommon;
+        private ExternalEventHandlerCommon externalEventHandlerCommon;
+        private Autodesk.Revit.UI.ExternalEvent externalEvent;
+
+        /// <summary>
+        /// 外部事件刚刚开始并且准备执行时触发.
+        /// </summary>
+        public event EventHandler<ExternalEventArg> Started;
+
+        /// <summary>
+        /// 外部事件结束时触发.
+        /// </summary>
+        public event EventHandler<ExternalEventArg> End;
 
         public ExternalEventHelper(UIApplication uiApp)
         {
-            m_ExternalEventCommon = new ExternalEventCommon();
+            this.externalEventHandlerCommon = new ExternalEventHandlerCommon();
+            this.externalEvent = Autodesk.Revit.UI.ExternalEvent.Create(this.externalEventHandlerCommon);
+
+            this.externalEventHandlerCommon.Started += externalEventCommon_Started;
+            this.externalEventHandlerCommon.End += externalEventCommon_End;
         }
 
         public ExternalEventHelper(UIControlledApplication uiControlApp)
         {
-            m_ExternalEventCommon = new ExternalEventCommon();
+            this.externalEventHandlerCommon = new ExternalEventHandlerCommon();
+            this.externalEvent = Autodesk.Revit.UI.ExternalEvent.Create(this.externalEventHandlerCommon);
+
+            this.externalEventHandlerCommon.Started += externalEventCommon_Started;
+            this.externalEventHandlerCommon.End += externalEventCommon_End;
         }
 
-
-        class ExternalEventCommon : IExternalEventHandler
+        public void Invoke(Action<UIApplication> action, string name = "")
         {
-            private Action<UIApplication> Action { get; set; }
-            private string Name { get; set; }
+            this.externalEventHandlerCommon.Name = string.IsNullOrWhiteSpace(name) ? Guid.NewGuid().ToString() : name;
+            this.externalEventHandlerCommon.Action = action;
+            this.externalEvent.Raise();
+        }
+
+        private void externalEventCommon_End(object sender, ExternalEventArg e)
+        {
+            if (this.End != null)
+                this.End(this, e);
+        }
+
+        private void externalEventCommon_Started(object sender, ExternalEventArg e)
+        {
+            if (this.Started != null)
+                this.Started(this, e);
+        }
+
+        class ExternalEventHandlerCommon : IExternalEventHandler
+        {
+            internal Action<UIApplication> Action { get; set; }
+            internal string Name { get; set; }
+
+            public event EventHandler<ExternalEventArg> Started;
+            public event EventHandler<ExternalEventArg> End;
 
             public void Execute(UIApplication app)
             {
                 if (this.Action == null)
                     return;
+                try
+                {
+                    if (this.Started != null)
+                        this.Started(this, new ExternalEventArg(app, this.Name));
 
-
-                this.Action(app);
+                    this.Action(app);
+                }
+                finally
+                {
+                    this.End(this, new ExternalEventArg(app, this.Name));
+                }
             }
 
             public string GetName()
