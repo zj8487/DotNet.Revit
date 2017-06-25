@@ -29,6 +29,8 @@ namespace DotNet.Revit.ExternalEvent
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // 连续调用外部事件...
+
             var helper = CmdExternalEvent.Instance.ExternalEventHelper;
     
             helper.Invoke(m =>
