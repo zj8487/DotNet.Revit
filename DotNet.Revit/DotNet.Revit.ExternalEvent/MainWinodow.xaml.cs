@@ -48,12 +48,6 @@ namespace DotNet.Revit.ExternalEvent
                 }
             });
 
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var helper = CmdExternalEvent.Instance.ExternalEventHelper;
-
             helper.Invoke(m =>
             {
                 var uiDoc = m.ActiveUIDocument;
@@ -71,6 +65,11 @@ namespace DotNet.Revit.ExternalEvent
 
                 }
             });
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

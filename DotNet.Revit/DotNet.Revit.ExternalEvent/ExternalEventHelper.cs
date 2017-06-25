@@ -14,7 +14,7 @@ namespace DotNet.Revit.ExternalEvent
     {
         #region fields
         private ExternalEventHandlerCommon externalEventHandlerCommon;
-        private Autodesk.Revit.UI.ExternalEvent externalEvent; 
+        private Autodesk.Revit.UI.ExternalEvent externalEvent;
         #endregion
 
         #region events
@@ -26,7 +26,7 @@ namespace DotNet.Revit.ExternalEvent
         /// <summary>
         /// 外部事件结束时触发.
         /// </summary>
-        public event EventHandler<ExternalEventArg> End; 
+        public event EventHandler<ExternalEventArg> End;
         #endregion
 
         #region ctors
@@ -46,14 +46,14 @@ namespace DotNet.Revit.ExternalEvent
 
             this.externalEventHandlerCommon.Started += externalEventCommon_Started;
             this.externalEventHandlerCommon.End += externalEventCommon_End;
-        } 
+        }
         #endregion
 
         #region methods
         public void Invoke(Action<UIApplication> action, string name = "")
         {
-            this.externalEventHandlerCommon.Name = string.IsNullOrWhiteSpace(name) ? Guid.NewGuid().ToString() : name;
-            this.externalEventHandlerCommon.Action = action;
+            var nf = string.IsNullOrWhiteSpace(name) ? Guid.NewGuid().ToString() : name;
+            this.externalEventHandlerCommon.Actions.Enqueue(new KeyValuePair<string, Action<UIApplication>>(nf, action));
             this.externalEvent.Raise();
         }
 
@@ -67,40 +67,50 @@ namespace DotNet.Revit.ExternalEvent
         {
             if (this.Started != null)
                 this.Started(this, e);
-        } 
+        }
         #endregion
 
         #region nestedClasss
         class ExternalEventHandlerCommon : IExternalEventHandler
         {
-            internal Action<UIApplication> Action { get; set; }
-            internal string Name { get; set; }
+            internal Queue<KeyValuePair<string, Action<UIApplication>>> Actions { get; set; }
 
             public event EventHandler<ExternalEventArg> Started;
             public event EventHandler<ExternalEventArg> End;
 
+            internal ExternalEventHandlerCommon()
+            {
+                this.Actions = new Queue<KeyValuePair<string, Action<UIApplication>>>();
+            }
+
             public void Execute(UIApplication app)
             {
-                if (this.Action == null)
-                    return;
-                try
+                while (this.Actions.Count > 0)
                 {
-                    if (this.Started != null)
-                        this.Started(this, new ExternalEventArg(app, this.Name));
+                    var first = this.Actions.Dequeue();
 
-                    this.Action(app);
-                }
-                finally
-                {
-                    this.End(this, new ExternalEventArg(app, this.Name));
+                    if (string.IsNullOrWhiteSpace(first.Key) || first.Value == null)
+                        continue;
+
+                    try
+                    {
+                        if (this.Started != null)
+                            this.Started(this, new ExternalEventArg(app, first.Key));
+
+                        first.Value(app);
+                    }
+                    finally
+                    {
+                        this.End(this, new ExternalEventArg(app, first.Key));
+                    }
                 }
             }
 
             public string GetName()
             {
-                return this.Name;
+                return "";
             }
-        } 
+        }
         #endregion
     }
 
