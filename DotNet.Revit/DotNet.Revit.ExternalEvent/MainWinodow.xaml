@@ -1,0 +1,11 @@
+﻿<Window x:Class="DotNet.Revit.ExternalEvent.MainWinodow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Height="291" Width="462">
+    <Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Height="30" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="120" Click="Button_Click"/>
+    </Grid>
+</Window>
