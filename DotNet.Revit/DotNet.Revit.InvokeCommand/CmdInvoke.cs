@@ -16,9 +16,9 @@ namespace DotNet.Revit.InvokeCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            // 调用Look up 
+            // 调用Look up Snoop Db
 
-            InvokeHelper.Invoke("ID_OBJECTS_WALL");
+            InvokeHelper.Invoke("CustomCtrl_%CustomCtrl_%CustomCtrl_%Add-Ins%Revit Lookup%Options%Snoop Db..");
 
             return Result.Succeeded;
         }
@@ -41,8 +41,9 @@ namespace DotNet.Revit.InvokeCommand
             if (e.Item == null)
                 return;
 
+            // 获取命令Id 
             var id = UIFramework.ControlHelper.GetCommandId(e.Item);
-            UIFrameworkServices.DialogBarService.setOptionBarTitle(e.Item.Id);
+
             Debug.WriteLine(string.Format("Text: {0}   ID: {1}", e.Item.Text, e.Item.Id));
         }
     }
