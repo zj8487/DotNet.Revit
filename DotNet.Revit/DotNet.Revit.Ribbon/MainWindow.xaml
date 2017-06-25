@@ -1,0 +1,31 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:pad="clr-namespace:Autodesk.Private.Windows;assembly=AdWindows" 
+        xmlns:ad="clr-namespace:Autodesk.Windows;assembly=AdWindows" x:Class="DotNet.Revit.Ribbon.MainWindow"
+        Title="MainWindow" Height="500" Width="816">
+    <Grid x:Name="mainGrid">
+        <ad:RibbonControl Height="116" VerticalAlignment="Top" >
+            <ad:RibbonTab Title="BIM">
+                <ad:RibbonPanel>
+                    <ad:RibbonPanelSource Title="BIM">
+                        <ad:RibbonButton MinWidth="120" Text="DotNet" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
+                        <ad:RibbonSeparator></ad:RibbonSeparator>
+                        <ad:RibbonButton MinWidth="120" Text="Revit" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
+                    </ad:RibbonPanelSource>
+                </ad:RibbonPanel>
+                <ad:RibbonPanel>
+                    <ad:RibbonPanelSpacer />
+                </ad:RibbonPanel>
+                <ad:RibbonPanel >
+                    <ad:RibbonPanelSource Title="GitHub">
+                        <ad:RibbonButton MinWidth="120" Text="GitHub" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
+                        <ad:RibbonPanelBreak/>
+                        <ad:RibbonButton MinWidth="120" Text="GitHub" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
+                    </ad:RibbonPanelSource>
+                </ad:RibbonPanel>
+            </ad:RibbonTab>
+            <ad:RibbonTab Title="API"/>
+        </ad:RibbonControl>
+    </Grid>
+</Window>
