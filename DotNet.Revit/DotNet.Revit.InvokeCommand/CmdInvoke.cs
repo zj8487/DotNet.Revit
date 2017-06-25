@@ -16,12 +16,14 @@ namespace DotNet.Revit.InvokeCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            //// 调用Look up Snoop Db
+            // 调用Look up Snoop Db
+            // Look up Snoop Db 命令Id通过下方执行下方命令CmdInvokeTest，控制台输出查询。
 
-            //InvokeHelper.Invoke("CustomCtrl_%CustomCtrl_%CustomCtrl_%Add-Ins%Revit Lookup%Options%Snoop Db..");
+            InvokeHelper.Invoke("CustomCtrl_%CustomCtrl_%CustomCtrl_%Add-Ins%Revit Lookup%Options%Snoop Db..");
 
-            // 调用右键菜单 - 区域放大
-            // 右键菜单的 命令Id 可在Revit日志内进行查询..
+           
+            /* 调用右键菜单 - 区域放大
+             右键菜单的 命令Id 可在Revit日志内进行查询..*/
 
             InvokeHelper.Invoke("ID_ZOOM_IN");
 
