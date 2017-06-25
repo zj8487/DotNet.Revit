@@ -9,6 +9,12 @@ namespace DotNet.Revit
 {
     public static class GeometryObjectHelper
     {
+        /// <summary>
+        /// 获取元素的所有GeomObjects
+        /// </summary>
+        /// <param name="elem">The elem.</param>
+        /// <param name="options">The options.</param>
+        /// <returns></returns>
         public static List<Autodesk.Revit.DB.GeometryObject> GetGeometryObjects(this Element elem, Options options = default(Options))
         {
             var result = new List<Autodesk.Revit.DB.GeometryObject>();
