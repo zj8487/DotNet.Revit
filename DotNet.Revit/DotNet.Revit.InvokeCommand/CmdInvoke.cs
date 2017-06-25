@@ -7,6 +7,7 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.Attributes;
 using System.Diagnostics;
+using Autodesk.Windows;
 
 namespace DotNet.Revit.InvokeCommand
 {
@@ -15,9 +16,9 @@ namespace DotNet.Revit.InvokeCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+            // 调用Look up 
 
             InvokeHelper.Invoke("ID_OBJECTS_WALL");
-
 
             return Result.Succeeded;
         }
@@ -28,7 +29,9 @@ namespace DotNet.Revit.InvokeCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            Autodesk.Windows.ComponentManager.ItemExecuted += ComponentManager_ItemExecuted;
+            // 当命令控件点击执行后触发事件...
+
+            ComponentManager.ItemExecuted += ComponentManager_ItemExecuted;
 
             return Result.Succeeded;
         }
@@ -40,7 +43,6 @@ namespace DotNet.Revit.InvokeCommand
 
             var id = UIFramework.ControlHelper.GetCommandId(e.Item);
             UIFrameworkServices.DialogBarService.setOptionBarTitle(e.Item.Id);
-
             Debug.WriteLine(string.Format("Text: {0}   ID: {1}", e.Item.Text, e.Item.Id));
         }
     }

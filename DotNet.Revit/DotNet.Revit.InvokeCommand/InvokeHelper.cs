@@ -54,21 +54,5 @@ namespace DotNet.Revit.InvokeCommand
 
         }
 
-
-        /// <summary>
-        /// 执行组合按键。
-        /// </summary>
-        /// <param name="key1">The key1.</param>
-        /// <param name="key2">The key2.</param>
-        public static void PressyKey(System.Windows.Forms.Keys key1, System.Windows.Forms.Keys key2)
-        {
-            keybd_event((byte)key1, 0, 0, 0);
-            keybd_event((byte)key2, 0, 0, 0);
-            keybd_event((byte)key1, 0, 2, 0);
-            keybd_event((byte)key2, 0, 2, 0);
-        }
-
-        [DllImport("user32")]
-        private static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
     }
 }
