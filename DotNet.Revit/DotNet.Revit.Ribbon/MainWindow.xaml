@@ -9,9 +9,9 @@
             <ad:RibbonTab Title="BIM">
                 <ad:RibbonPanel>
                     <ad:RibbonPanelSource Title="BIM">
-                        <ad:RibbonButton MinWidth="120" Text="DotNet" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
+                        <ad:RibbonButton x:Name="ID_DoNet" MinWidth="120"  Text="DotNet" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
                         <ad:RibbonSeparator></ad:RibbonSeparator>
-                        <ad:RibbonButton MinWidth="120" Text="Revit" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
+                        <ad:RibbonButton x:Name="ID_Revit"  MinWidth="120" Text="Revit" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
                     </ad:RibbonPanelSource>
                 </ad:RibbonPanel>
                 <ad:RibbonPanel>
@@ -19,9 +19,9 @@
                 </ad:RibbonPanel>
                 <ad:RibbonPanel >
                     <ad:RibbonPanelSource Title="GitHub">
-                        <ad:RibbonButton MinWidth="120" Text="GitHub" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
+                        <ad:RibbonButton x:Name="ID_GitHub" MinWidth="120" Text="GitHub" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
                         <ad:RibbonPanelBreak/>
-                        <ad:RibbonButton MinWidth="120" Text="GitHub" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
+                        <ad:RibbonButton x:Name="ID_GitHubChild" MinWidth="120" Text="GitHubChild" ShowImage="True" Orientation="Vertical" Size="Large" ShowText="True"/>
                     </ad:RibbonPanelSource>
                 </ad:RibbonPanel>
             </ad:RibbonTab>
