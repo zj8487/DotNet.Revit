@@ -13,8 +13,8 @@ namespace DotNet.Revit.ViewTransform
         /// <summary>
         /// 屏幕点转为空间三维点.
         /// </summary>
-        /// <param name="view">The view.</param>
-        /// <param name="point">The point.</param>
+        /// <param name="view">指定转换到的视图.</param>
+        /// <param name="point">指定屏幕上的点.</param>
         /// <returns></returns>
         public static XYZ ScreenToWorld(this View view, System.Drawing.Point point)
         {
@@ -27,10 +27,7 @@ namespace DotNet.Revit.ViewTransform
             if (uiView == null)
                 throw new NullReferenceException();
 
-            // 屏幕Rect
             var rect = uiView.GetWindowRectangle();
-
-            // 屏幕对角三维点
             var corners = uiView.GetZoomCorners();
 
             var mousePoint = new XYZ(point.X, point.Y, 0);
@@ -42,11 +39,9 @@ namespace DotNet.Revit.ViewTransform
             var scale = corners[0].DistanceTo(corners[1])
                 / screenLeftlower.DistanceTo(screenRightupper);
 
-            // X、Y 方向距离
             var xdis = (point.X - screenLeftlower.X) * scale;
             var ydis = (screenLeftlower.Y - point.Y) * scale;
 
-            // X、Y 方向
             var vp = uiDoc.ActiveView.UpDirection;
             var vr = uiDoc.ActiveView.RightDirection;
 
