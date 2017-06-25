@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.InvokeCommand", "DotNet.Revit.InvokeCommand\DotNet.Revit.InvokeCommand.csproj", "{F40BCA44-2737-4530-866C-B8ECB07696BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.ShortKey", "DotNet.Revit.ShortKey\DotNet.Revit.ShortKey.csproj", "{BB36AF9B-E8EC-42BA-AEA8-21C7B6C94058}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F40BCA44-2737-4530-866C-B8ECB07696BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F40BCA44-2737-4530-866C-B8ECB07696BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F40BCA44-2737-4530-866C-B8ECB07696BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB36AF9B-E8EC-42BA-AEA8-21C7B6C94058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB36AF9B-E8EC-42BA-AEA8-21C7B6C94058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB36AF9B-E8EC-42BA-AEA8-21C7B6C94058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB36AF9B-E8EC-42BA-AEA8-21C7B6C94058}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
