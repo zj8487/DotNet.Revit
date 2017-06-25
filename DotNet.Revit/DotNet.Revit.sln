@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.ShortKey", "Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.GeometryObject", "DotNet.Revit.GeometryObject\DotNet.Revit.GeometryObject.csproj", "{61F38117-EB54-46B6-96BB-D62B3E0E599A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.Ribbon", "DotNet.Revit.Ribbon\DotNet.Revit.Ribbon.csproj", "{6519EF10-60A9-46DE-A14E-9B8787BCC5FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{61F38117-EB54-46B6-96BB-D62B3E0E599A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61F38117-EB54-46B6-96BB-D62B3E0E599A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61F38117-EB54-46B6-96BB-D62B3E0E599A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6519EF10-60A9-46DE-A14E-9B8787BCC5FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6519EF10-60A9-46DE-A14E-9B8787BCC5FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6519EF10-60A9-46DE-A14E-9B8787BCC5FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6519EF10-60A9-46DE-A14E-9B8787BCC5FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
