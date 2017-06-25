@@ -27,8 +27,7 @@ namespace DotNet.Revit.ExternalEvent
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-
+            CmdExternalEvent.Instance.ExternalEvent.Raise();
         }
     }
 }

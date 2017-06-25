@@ -30,6 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdWindows, Version=6.3.0.21, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\CYBIM\CYCommons\References\Revit\16\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI">
@@ -40,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CmdExternalEvent.cs" />
+    <Compile Include="DocumentExtension.cs" />
     <Compile Include="ExternalEventHelper.cs" />
     <Compile Include="MainWinodow.xaml.cs">
       <DependentUpon>MainWinodow.xaml</DependentUpon>
