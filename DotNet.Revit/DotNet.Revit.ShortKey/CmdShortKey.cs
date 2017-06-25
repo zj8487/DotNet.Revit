@@ -24,7 +24,7 @@ namespace DotNet.Revit.ShortKey
             // 基于Revit的命令控件动态设置快捷键测试....
 
             var panel = commandData.Application.CreateRibbonPanel("ShortKeyTest");
-            var data = new PushButtonData("Buttonname2", "Button2", typeof(CmdTest).Assembly.Location, typeof(CmdTest).FullName);
+            var data = new PushButtonData("ID_BIMAPI", "ShortKey", typeof(CmdTest).Assembly.Location, typeof(CmdTest).FullName);
             var btn = panel.AddItem(data) as Autodesk.Revit.UI.RibbonButton;
 
             btn.SetShortCut("BIMAPI");
@@ -33,7 +33,6 @@ namespace DotNet.Revit.ShortKey
             // 修改 门 按钮的快捷键
 
             var item = Autodesk.Windows.ComponentManager.Ribbon.FindItem("ID_OBJECTS_DOOR", false);
-
             if (item == null)
                 return Result.Succeeded;
 
