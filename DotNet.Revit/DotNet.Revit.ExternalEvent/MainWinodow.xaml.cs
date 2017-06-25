@@ -29,7 +29,7 @@ namespace DotNet.Revit.ExternalEvent
         {
 
 
-            CmdExternalEvent.Instance.ExternalEvent.Raise();
+            CmdExternalEvent.Instance.ExternalEventHelper.Raise();
         }
     }
 }

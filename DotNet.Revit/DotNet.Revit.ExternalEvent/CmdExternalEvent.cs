@@ -16,26 +16,26 @@ namespace DotNet.Revit.ExternalEvent
     public class CmdExternalEvent : IExternalCommand
     {
         private static CmdExternalEvent m_Instance;
-        private Autodesk.Revit.UI.ExternalEvent m_ExternalEvent;
+        private ExternalEventHelper m_ExternalEventHelper;
 
         public static CmdExternalEvent Instance
         {
-            get { return CmdExternalEvent.m_Instance; }
+            get { return m_Instance; }
         }
 
-        public Autodesk.Revit.UI.ExternalEvent ExternalEvent
+        public ExternalEventHelper ExternalEventHelper
         {
-            get { return m_ExternalEvent; }
+            get { return m_ExternalEventHelper; }
         }
+
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             m_Instance = this;
-
-            m_ExternalEvent = Autodesk.Revit.UI.ExternalEvent.Create(new ExternalEventCommon());
+            m_ExternalEventHelper = new ExternalEventHelper(commandData.Application);
 
             var main = new MainWinodow();
-            var mainHelper=new WindowInteropHelper(main);
+            var mainHelper = new WindowInteropHelper(main);
             mainHelper.Owner = ComponentManager.ApplicationWindow;
             main.Show();
 

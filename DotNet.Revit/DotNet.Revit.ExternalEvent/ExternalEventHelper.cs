@@ -40,6 +40,7 @@ namespace DotNet.Revit.ExternalEvent
             this.externalEventHandlerCommon.End += externalEventCommon_End;
         }
 
+
         public void Invoke(Action<UIApplication> action, string name = "")
         {
             this.externalEventHandlerCommon.Name = string.IsNullOrWhiteSpace(name) ? Guid.NewGuid().ToString() : name;
