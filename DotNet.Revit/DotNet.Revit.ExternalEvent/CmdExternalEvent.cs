@@ -17,7 +17,21 @@ namespace DotNet.Revit.ExternalEvent
 
 
 
+
             return Result.Succeeded;
+        }
+    }
+
+    public class ExternalEventHandler : IExternalEventHandler
+    {
+        public void Execute(UIApplication app)
+        {
+           
+        }
+
+        public string GetName()
+        {
+            return "Name";
         }
     }
 }
