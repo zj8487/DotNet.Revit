@@ -18,8 +18,6 @@ namespace DotNet.Revit.ExternalEvent
                
                 if (tr.GetStatus() == TransactionStatus.Started)
                     tr.Commit();
-                else
-                    tr.RollBack();
             }
         }
     }
