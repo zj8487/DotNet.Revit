@@ -51,7 +51,7 @@ namespace DotNet.Revit.InvokeCommand
             // 获取命令Id 
             var id = UIFramework.ControlHelper.GetCommandId(e.Item);
 
-            Debug.WriteLine(string.Format("Text: {0}   ID: {1}", e.Item.Text, e.Item.Id));
+            Debug.WriteLine(string.Format("Text: {0}   ID: {1}", e.Item.Text, id));
         }
     }
 }
