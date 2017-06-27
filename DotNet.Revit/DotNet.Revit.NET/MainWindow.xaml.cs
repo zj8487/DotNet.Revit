@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit;
 using Autodesk.Revit.DB;
+using Autodesk.RevitAddIns;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -25,10 +26,13 @@ namespace DotNet.Revit.NET
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly static string RevitFolder = @"D:\Program Files\Autodesk\Revit 2016";
+        private readonly static string RevitFolder = string.Empty;
+        private Autodesk.Revit.ApplicationServices.Application m_App;
 
         static MainWindow()
         {
+            RevitFolder = MainWindow.GetRevitInstallationPath(RevitVersion.Revit2016);
+
             MainWindow.AddEnvironmentPaths(new string[] { RevitFolder });
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
         }
@@ -36,6 +40,17 @@ namespace DotNet.Revit.NET
         public MainWindow()
         {
             InitializeComponent();
+
+            if (Directory.Exists(RevitFolder))
+            {
+                var product = Product.GetInstalledProduct();
+                var clientId = new ClientApplicationId(Guid.NewGuid(), "DotNet", "BIMAPI");
+
+                // I am authorized by Autodesk to use this UI-less functionality. 必须是此字符串。为啥？ Autodesk 规定的.
+                product.Init(clientId, "I am authorized by Autodesk to use this UI-less functionality.");
+
+                m_App = product.Application;
+            }
         }
 
         /// <summary>
@@ -43,8 +58,13 @@ namespace DotNet.Revit.NET
         /// </summary>
         private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
-            AssemblyName assemblyName = new AssemblyName(args.Name);
-            return Assembly.LoadFrom(System.IO.Path.Combine(RevitFolder, string.Format("{0}.dll", assemblyName.Name)));
+            var assemblyName = new AssemblyName(args.Name);
+            var file = string.Format("{0}.dll", System.IO.Path.Combine(RevitFolder, assemblyName.Name));
+
+            if (File.Exists(file))
+                return Assembly.LoadFrom(file);
+
+            return null;
         }
 
         /// <summary>
@@ -58,8 +78,23 @@ namespace DotNet.Revit.NET
             Environment.SetEnvironmentVariable("PATH", newPath);
         }
 
+        private static string GetRevitInstallationPath(RevitVersion version)
+        {
+            var product = Autodesk.RevitAddIns.RevitProductUtility.GetAllInstalledRevitProducts().FirstOrDefault(m => m.Version == version);
+            if (product == null)
+                return string.Empty;
+
+            return product.InstallLocation;
+        }
+
         private void readFile_Click(object sender, RoutedEventArgs e)
         {
+            if (m_App == null)
+            {
+                MessageBox.Show("Revit NET 初始化失败，请检查电脑是否已安装Revit 相应版本！！");
+                return;
+            }
+
             var openFile = new OpenFileDialog();
             openFile.Filter = "Revit Project|*.rvt|Revit Family|*.rfa";
 
@@ -70,19 +105,12 @@ namespace DotNet.Revit.NET
                 if (!File.Exists(file))
                     return;
 
-                var product = Product.GetInstalledProduct();
-                var clientId = new ClientApplicationId(Guid.NewGuid(), "DotNet", "BIMAPI");
+                var doc = m_App.OpenDocumentFile(file);
+                if (doc == null)
+                    return;
 
-                // I am authorized by Autodesk to use this UI-less functionality. 必须是此字符串。为啥？ Autodesk 规定的.
-                product.Init(clientId, "I am authorized by Autodesk to use this UI-less functionality.");
-
-                var app = product.Application;
-
-                var doc = app.OpenDocumentFile(file);
-
-                var elems = new FilteredElementCollector(doc, doc.ActiveView.Id).WhereElementIsNotElementType();
-
-                MessageBox.Show(string.Format("Docment ： {0}, Element： {1} 个"));
+                var elems = new FilteredElementCollector(doc).OfClass(typeof(FamilyInstance));
+                MessageBox.Show(string.Format("Docment ： {0}, Element： {1} 个", doc.PathName, elems.Count()));
             }
         }
     }
