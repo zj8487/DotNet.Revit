@@ -77,15 +77,20 @@ namespace DotNet.Revit.NET
             Environment.SetEnvironmentVariable("PATH", newPath);
         }
 
+        /// <summary>
+        /// 指定Revit版本获取Revit安装路径.
+        /// </summary>
         private static string GetRevitInstallationPath(RevitVersion version)
         {
             var product = Autodesk.RevitAddIns.RevitProductUtility.GetAllInstalledRevitProducts().FirstOrDefault(m => m.Version == version);
             if (product == null)
                 return string.Empty;
-
             return product.InstallLocation;
         }
 
+        /// <summary>
+        /// 读取文件测试.
+        /// </summary>
         private void readFile_Click(object sender, RoutedEventArgs e)
         {
             if (m_App == null)
