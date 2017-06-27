@@ -11,7 +11,7 @@ QQ     : 154840459
 
 ## Author
 
-Dedicated to BIM software development. (Revit 、AutoCAD、Inventor、Navisworks)
+Dedicated to BIM software API development. (Revit 、AutoCAD、Inventor、Navisworks)
 
 
 ## License
