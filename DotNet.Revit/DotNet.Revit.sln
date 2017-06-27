@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.ViewTransform"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.ExternalEvent", "DotNet.Revit.ExternalEvent\DotNet.Revit.ExternalEvent.csproj", "{7164311A-01C1-4FAB-97DB-B9310C973800}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.NET", "DotNet.Revit.NET\DotNet.Revit.NET.csproj", "{A4D8216D-D414-4482-A1DC-98A972D09227}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{7164311A-01C1-4FAB-97DB-B9310C973800}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7164311A-01C1-4FAB-97DB-B9310C973800}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7164311A-01C1-4FAB-97DB-B9310C973800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4D8216D-D414-4482-A1DC-98A972D09227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4D8216D-D414-4482-A1DC-98A972D09227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4D8216D-D414-4482-A1DC-98A972D09227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4D8216D-D414-4482-A1DC-98A972D09227}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
