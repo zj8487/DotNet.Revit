@@ -1,6 +1,6 @@
 # DotNet.Revit
 
-![Build Status](https://s3-eu-west-1.amazonaws.com/lookup-builds/extra/build_status.svg)
+![Gitter](https://badges.gitter.im/Join Chat.svg)
 
 This project is about Revit API related code examples.
 This project code is all original, in order to provide and study and exchange use.
