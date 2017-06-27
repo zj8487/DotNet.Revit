@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.GeometryObject
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.Ribbon", "DotNet.Revit.Ribbon\DotNet.Revit.Ribbon.csproj", "{6519EF10-60A9-46DE-A14E-9B8787BCC5FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.Bubble", "DotNet.Revit.Bubble\DotNet.Revit.Bubble.csproj", "{05D24D81-2B51-4FA2-9ED7-6519E8478391}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.ViewTransform", "DotNet.Revit.ViewTransform\DotNet.Revit.ViewTransform.csproj", "{748628B2-77B6-4C20-AE98-7C78F71386AB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.ExternalEvent", "DotNet.Revit.ExternalEvent\DotNet.Revit.ExternalEvent.csproj", "{7164311A-01C1-4FAB-97DB-B9310C973800}"
@@ -41,10 +39,6 @@ Global
 		{6519EF10-60A9-46DE-A14E-9B8787BCC5FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6519EF10-60A9-46DE-A14E-9B8787BCC5FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6519EF10-60A9-46DE-A14E-9B8787BCC5FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{05D24D81-2B51-4FA2-9ED7-6519E8478391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05D24D81-2B51-4FA2-9ED7-6519E8478391}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05D24D81-2B51-4FA2-9ED7-6519E8478391}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05D24D81-2B51-4FA2-9ED7-6519E8478391}.Release|Any CPU.Build.0 = Release|Any CPU
 		{748628B2-77B6-4C20-AE98-7C78F71386AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{748628B2-77B6-4C20-AE98-7C78F71386AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{748628B2-77B6-4C20-AE98-7C78F71386AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
