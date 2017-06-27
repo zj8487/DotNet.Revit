@@ -48,7 +48,6 @@ namespace DotNet.Revit.NET
 
                 // I am authorized by Autodesk to use this UI-less functionality. 必须是此字符串。为啥？ Autodesk 规定的.
                 product.Init(clientId, "I am authorized by Autodesk to use this UI-less functionality.");
-
                 m_App = product.Application;
             }
         }
