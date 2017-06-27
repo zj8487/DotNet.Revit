@@ -5,15 +5,14 @@ This project is about Revit API related code examples.
 This project code is all original, in order to provide and study and exchange use.
 If you find the code error, please contact !
 
-E-mail : admin@bimapi.com   
-QQ     : 154840459
-
 
 ## Author
 
 Dedicated to BIM software API development. (Revit 、AutoCAD、Inventor、Navisworks)
 
-Zhonghao He
+E-mail : admin@bimapi.com   
+QQ     : 154840459
+
 
 ## License
 
