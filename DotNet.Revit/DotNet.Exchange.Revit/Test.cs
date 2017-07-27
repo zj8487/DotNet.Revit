@@ -42,13 +42,26 @@ namespace DotNet.Exchange.Revit
                         var p2 = polygonMesh.Points[triangleFaces.V2];
                         var p3 = polygonMesh.Points[triangleFaces.V3];
 
-                        doc.Create.NewModelCurve(Line.CreateBound(p1, p2), SketchPlane.Create(uiDoc.Document, this.ToPlane(p1, p2)));
-                        doc.Create.NewModelCurve(Line.CreateBound(p2, p3), SketchPlane.Create(uiDoc.Document, this.ToPlane(p2, p3)));
-                        doc.Create.NewModelCurve(Line.CreateBound(p3, p1), SketchPlane.Create(uiDoc.Document, this.ToPlane(p3, p1)));
+                        CreateModelLine(doc,p1, p2);
+                        CreateModelLine(doc, p2, p3);
+                        CreateModelLine(doc, p3, p1);
+
                     }
                 }
             });
             return Result.Succeeded;
+        }
+
+        private void CreateModelLine(Document doc, XYZ p1, XYZ p2)
+        {
+            if (doc.IsFamilyDocument)
+            {
+                doc.FamilyCreate.NewModelCurve(Line.CreateBound(p1, p2), SketchPlane.Create(doc, this.ToPlane(p1, p2)));
+            }
+            else
+            {
+                doc.Create.NewModelCurve(Line.CreateBound(p1, p2), SketchPlane.Create(doc, this.ToPlane(p1, p2)));
+            }
         }
 
         private Autodesk.Revit.DB.Plane ToPlane(XYZ point, XYZ other)
