@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace DotNet.Exchange.Revit.Export
 {
+    /// <summary>
+    /// 自定义测试导出类.
+    /// </summary>
+    /// <seealso cref="DotNet.Exchange.Revit.Export.IExportElement" />
     public class ExportElment : IExportElement
     {
         public HashSet<PolygonMeshNode> elemIds = new HashSet<PolygonMeshNode>();
