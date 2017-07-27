@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.InvokeCommand", "DotNet.Revit.InvokeCommand\DotNet.Revit.InvokeCommand.csproj", "{F40BCA44-2737-4530-866C-B8ECB07696BE}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.ExternalEvent", "DotNet.Revit.ExternalEvent\DotNet.Revit.ExternalEvent.csproj", "{7164311A-01C1-4FAB-97DB-B9310C973800}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Revit.NET", "DotNet.Revit.NET\DotNet.Revit.NET.csproj", "{A4D8216D-D414-4482-A1DC-98A972D09227}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Exchange.Revit", "DotNet.Exchange.Revit\DotNet.Exchange.Revit.csproj", "{22EDDE0F-0E6A-4C47-AEA5-17027830F236}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{A4D8216D-D414-4482-A1DC-98A972D09227}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4D8216D-D414-4482-A1DC-98A972D09227}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4D8216D-D414-4482-A1DC-98A972D09227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22EDDE0F-0E6A-4C47-AEA5-17027830F236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22EDDE0F-0E6A-4C47-AEA5-17027830F236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22EDDE0F-0E6A-4C47-AEA5-17027830F236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22EDDE0F-0E6A-4C47-AEA5-17027830F236}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

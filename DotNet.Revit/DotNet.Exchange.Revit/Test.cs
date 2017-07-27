@@ -12,7 +12,6 @@ using Autodesk.Revit.ApplicationServices;
 using DotNet.Exchange.Revit.Export;
 using BIM.RevitAPI.Core.Extensions;
 using BIM.RevitAPI.Core.Extensions.Elements;
-using UTest;
 
 namespace DotNet.Exchange.Revit
 {
