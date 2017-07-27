@@ -32,6 +32,8 @@ namespace DotNet.Exchange.Revit
             export.ExportLevel = 3;
             export.Export();
 
+            // 绘制测试，因绘制线速度较慢，所以当需要绘制测试时，请测试少量模型
+
             doc.Invoke(m =>
             {
                 foreach (var polygonMesh in elem.PolygonMeshNodes)
