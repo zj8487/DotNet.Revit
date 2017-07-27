@@ -10,8 +10,6 @@ using Autodesk.Revit.Utility;
 using System.Diagnostics;
 using Autodesk.Revit.ApplicationServices;
 using DotNet.Exchange.Revit.Export;
-using BIM.RevitAPI.Core.Extensions;
-using BIM.RevitAPI.Core.Extensions.Elements;
 
 namespace DotNet.Exchange.Revit
 {
