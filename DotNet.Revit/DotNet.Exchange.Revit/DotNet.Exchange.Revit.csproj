@@ -54,7 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExportContext.cs" />
     <Compile Include="ExportElment.cs" />
     <Compile Include="Export\ExportFactory.cs" />
     <Compile Include="Export\GeometryObjectNode.cs" />

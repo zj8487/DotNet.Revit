@@ -46,7 +46,6 @@ namespace DotNet.Exchange.Revit
                 }
             });
 
-
             return Result.Succeeded;
         }
 
