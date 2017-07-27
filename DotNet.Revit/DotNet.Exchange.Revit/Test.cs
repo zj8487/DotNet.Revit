@@ -27,16 +27,21 @@ namespace DotNet.Exchange.Revit
 
             var doc = uiDoc.Document;
 
-            var elem = new ExportElment();
-            var export = new ExportFactory(uiDoc.Document, elem);
-            export.ExportLevel = 3;
-            export.Export();
+            var refer = uiDoc.Selection.PickObject(Autodesk.Revit.UI.Selection.ObjectType.Element);
+
+            var elem = doc.GetElement(refer);
+
+
+            var export = new ExportElment();
+            var exportFactory = new ExportFactory(doc, export);
+            exportFactory.ExportLevel = 3;
+            exportFactory.Export(elem);
 
             // 绘制测试，因绘制线速度较慢，所以当需要绘制测试时，请测试少量模型
 
             doc.Invoke(m =>
             {
-                foreach (var polygonMesh in elem.PolygonMeshNodes)
+                foreach (var polygonMesh in export.PolygonMeshNodes)
                 {
                     foreach (var triangleFaces in polygonMesh.TriangleFaces)
                     {
@@ -44,7 +49,7 @@ namespace DotNet.Exchange.Revit
                         var p2 = polygonMesh.Points[triangleFaces.V2];
                         var p3 = polygonMesh.Points[triangleFaces.V3];
 
-                        CreateModelLine(doc,p1, p2);
+                        CreateModelLine(doc, p1, p2);
                         CreateModelLine(doc, p2, p3);
                         CreateModelLine(doc, p3, p1);
 
@@ -56,13 +61,19 @@ namespace DotNet.Exchange.Revit
 
         private void CreateModelLine(Document doc, XYZ p1, XYZ p2)
         {
-            if (doc.IsFamilyDocument)
+            using (var line = Line.CreateBound(p1, p2))
             {
-                doc.FamilyCreate.NewModelCurve(Line.CreateBound(p1, p2), SketchPlane.Create(doc, this.ToPlane(p1, p2)));
-            }
-            else
-            {
-                doc.Create.NewModelCurve(Line.CreateBound(p1, p2), SketchPlane.Create(doc, this.ToPlane(p1, p2)));
+                using (var skPlane = SketchPlane.Create(doc, this.ToPlane(p1, p2)))
+                {
+                    if (doc.IsFamilyDocument)
+                    {
+                        doc.FamilyCreate.NewModelCurve(line, skPlane);
+                    }
+                    else
+                    {
+                        doc.Create.NewModelCurve(line, skPlane);
+                    }
+                }
             }
         }
 
