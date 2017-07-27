@@ -13,7 +13,9 @@ namespace DotNet.Exchange.Revit.Export
     /// <seealso cref="DotNet.Exchange.Revit.Export.IExportElement" />
     public class ExportElment : IExportElement
     {
-        public HashSet<PolygonMeshNode> elemIds = new HashSet<PolygonMeshNode>();
+        // 临时测试
+
+        public HashSet<PolygonMeshNode> PolygonMeshNodes = new HashSet<PolygonMeshNode>();
 
         bool IExportElement.OnElementStart(Autodesk.Revit.DB.Element elem)
         {
@@ -33,7 +35,7 @@ namespace DotNet.Exchange.Revit.Export
 
         void IExportElement.OnPolygonMesh(PolygonMeshNode polygonMesh)
         {
-            elemIds.Add(polygonMesh);
+            PolygonMeshNodes.Add(polygonMesh);
         }
 
         void IExportElement.OnGeometryObjectEnd(GeometryObjectNode solid)

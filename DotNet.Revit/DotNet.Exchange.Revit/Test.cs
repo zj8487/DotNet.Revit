@@ -34,13 +34,13 @@ namespace DotNet.Exchange.Revit
 
             doc.Invoke(m =>
             {
-                foreach (var item in elem.elemIds)
+                foreach (var polygonMesh in elem.PolygonMeshNodes)
                 {
-                    foreach (var item2 in item.TriangleFaces)
+                    foreach (var triangleFaces in polygonMesh.TriangleFaces)
                     {
-                        var p1 = item.Points[item2.V1];
-                        var p2 = item.Points[item2.V2];
-                        var p3 = item.Points[item2.V3];
+                        var p1 = polygonMesh.Points[triangleFaces.V1];
+                        var p2 = polygonMesh.Points[triangleFaces.V2];
+                        var p3 = polygonMesh.Points[triangleFaces.V3];
 
                         doc.Create.NewModelCurve(Line.CreateBound(p1, p2), SketchPlane.Create(uiDoc.Document, this.ToPlane(p1, p2)));
                         doc.Create.NewModelCurve(Line.CreateBound(p2, p3), SketchPlane.Create(uiDoc.Document, this.ToPlane(p2, p3)));
@@ -69,6 +69,41 @@ namespace DotNet.Exchange.Revit
                 norm = v.CrossProduct(XYZ.BasisZ).Normalize();
             }
             return new Autodesk.Revit.DB.Plane(norm, point);
+        }
+    }
+
+    public static class DocumentExtension
+    {
+        /// <summary>
+        /// 使用委托启动事务.事务内自动进行事务启动，提交、回滚等处理。
+        /// </summary>
+        /// <param name="doc">The document.</param>
+        /// <param name="action">The action.</param>
+        /// <param name="name">The name.</param>
+        public static void Invoke(this Document doc, Action<Transaction> action, string name = "default")
+        {
+            using (var tr = new Transaction(doc, name))
+            {
+                tr.Start();
+
+                action(tr);
+
+                var status = tr.GetStatus();
+                switch (status)
+                {
+                    case TransactionStatus.Started:
+                        tr.Commit();
+                        return;
+                    case TransactionStatus.Committed:
+                    case TransactionStatus.RolledBack:
+                        break;
+                    case TransactionStatus.Error:
+                        tr.RollBack();
+                        return;
+                    default:
+                        return;
+                }
+            }
         }
     }
 }
