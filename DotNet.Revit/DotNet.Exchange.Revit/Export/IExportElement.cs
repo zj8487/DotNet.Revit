@@ -20,7 +20,7 @@ namespace DotNet.Exchange.Revit.Export
 
         /// <summary>
         /// 当元素内的GeometryObject进行导出时执行.
-        /// 如果返回结果为true，则开始进行此元素导出，否则放弃此元素导出.
+        /// 如果返回结果为true，则开始进行此GeometryObject导出，否则放弃此元素导出.
         /// </summary>
         bool OnGeometryObjectStart(GeometryObjectNode geometryObject);
 
