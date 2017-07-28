@@ -91,8 +91,7 @@ namespace DotNet.Exchange.Revit.Export
         /// </summary>
         public void AsynchExport()
         {
-            var t = Task.Run(() => this.Export());
-            t.Wait();
+            Task.Run(() => this.Export());
         }
 
         #endregion
